@@ -15,10 +15,11 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
 class ItemsResource extends Resource
+
 {
     protected static ?string $model = Items::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedDocument;
 
     protected static ?string $recordTitleAttribute = 'items';
 
