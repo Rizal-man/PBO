@@ -29,6 +29,7 @@ class ItemsForm
                     ]),
                 FileUpload::make('images')
                     ->image()
+                    ->disk('public')
                     ->directory('item-images')
                     ->maxSize(1024),
             ]);

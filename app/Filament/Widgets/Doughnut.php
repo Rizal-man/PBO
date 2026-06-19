@@ -6,7 +6,7 @@ use Filament\Widgets\ChartWidget;
 
 class Doughnut extends ChartWidget
 {
-    protected ?string $heading = 'Items Terlaris';
+    protected ?string $heading = 'Games Terlaris';
 
     protected function getData(): array
     {
@@ -14,7 +14,7 @@ class Doughnut extends ChartWidget
             'datasets' => [
                 [
                     'label' => 'DATA PENJUALAN 6 BULAN TERAKHIR',
-                    'data' => [25, 20, 15, 10, 5],
+                    'data' => [25, 20, 15, 10],
                     'backgroundColor' => [
                         'rgb(255, 99, 132)',
                         'rgb(54, 162, 235)',
@@ -25,7 +25,7 @@ class Doughnut extends ChartWidget
                         'hoverOffset' => 5
                 ],
             ],
-            'labels' => ['Outfit', 'Shoes', 'Accessories', 'Bags', 'Jackets'],
+            'labels' => ['Fishit', 'Blox Fruit', 'Sailor Piece', 'Grow a Garden'],
         ];
     }
 

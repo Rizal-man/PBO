@@ -25,9 +25,9 @@ class ItemsTable
                     ->sortable(),
                 TextColumn::make('harga_item')
                     ->numeric()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: false),
-                ImageColumn::make('images'),
+                    ->sortable(),
+                ImageColumn::make('images')
+                    ->disk('public'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

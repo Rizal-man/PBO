@@ -4,18 +4,18 @@ namespace App\Filament\Widgets;
 
 use Filament\Widgets\StatsOverviewWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
+use App\Models\items;
 
 class StatsDashboard extends StatsOverviewWidget
 {
     protected function getStats(): array
     {
-        $countItems = 32;
         return [
-            Stat::make('Unique views', \value($countItems))
-            ->description('items ada 32')
+            Stat::make('Total Items', items::count())
+            ->description('Semua items yang ada')
             ->descriptionIcon('heroicon-m-arrow-trending-up')
             ->color('success'),
-            Stat::make('Bounce rate', '20%')
+            Stat::make('Item terbanyak pada game', '20%')
             ->description('7% decrease')
             ->descriptionIcon('heroicon-m-arrow-trending-down'),
             Stat::make('Average time on page', '3:12')

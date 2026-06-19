@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Divine Land</title>
+    <title>Blox Shop</title>
     <!-- Mengimpor Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -13,6 +13,9 @@
             background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
             background-size: 50px 50px;
         }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+        .card { background: black; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .price { color: #e74c3c; font-weight: bold; }
     </style>
 </head>
 <body class="text-white font-sans min-h-screen flex flex-col items-center">
@@ -97,13 +100,12 @@
         </div>
 
         <!-- Filter Tags (Bagian Bawah) -->
-        <div class="flex flex-wrap justify-center gap-3 mt-20 mb-10">
+        <div class="flex flex-wrap justify-center gap-3 mt-20 mb-5">
             <button class="px-5 py-2 text-sm text-[#4da6ff] border border-[#4da6ff] rounded shadow-[0_0_10px_rgba(77,166,255,0.2)] bg-transparent">Any</button>
-            <button class="px-5 py-2 text-sm text-gray-400 border border-gray-800 rounded hover:border-gray-600 transition-colors">Executors</button>
-            <button class="px-5 py-2 text-sm text-gray-400 border border-gray-800 rounded hover:border-gray-600 transition-colors">Externals</button>
-            <button class="px-5 py-2 text-sm text-gray-400 border border-gray-800 rounded hover:border-gray-600 transition-colors">Scripts</button>
-            <button class="px-5 py-2 text-sm text-gray-400 border border-gray-800 rounded hover:border-gray-600 transition-colors">Accounts</button>
-            <button class="px-5 py-2 text-sm text-gray-400 border border-gray-800 rounded hover:border-gray-600 transition-colors">CS 2</button>
+            <button class="px-5 py-2 text-sm text-gray-400 border border-gray-800 rounded hover:border-gray-600 transition-colors">Fish It</button>
+            <button class="px-5 py-2 text-sm text-gray-400 border border-gray-800 rounded hover:border-gray-600 transition-colors">Blox Fruit</button>
+            <button class="px-5 py-2 text-sm text-gray-400 border border-gray-800 rounded hover:border-gray-600 transition-colors">Sailor Piece</button>
+            <button class="px-5 py-2 text-sm text-gray-400 border border-gray-800 rounded hover:border-gray-600 transition-colors">Grow A Garden</button>
         </div>
 
     </main>
@@ -116,6 +118,28 @@
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 0a2 2 0 100 4 2 2 0 000-4z"/></svg>
         </button>
     </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-5xl px-4 mt-5">
+        @foreach ($items as $item)
+            <div class="card">
+                <img src="{{ Storage::url($item->images) }}" alt="{{ $item->nama_item }}" class="w-full h-40 object-cover rounded-md mb-3">
+                <h3 class="text-xl font-bold text-white mb-2 text-center">{{ $item->nama_item }}</h3>
+                <p>Stock : {{ $item->jumlah_item }}</p>
+                <p class="price"><span class="font-bold text-white">Price :</span> Rp {{ number_format($item->harga_item, 0, ',', '.') }}</p>
+                <div class="flex flex-row gap-2 mt-3">
+                    <button class="mt-3 w-full px-4 py-2 bg-[#4da6ff] text-black font-semibold rounded-md hover:bg-[#3399ff] transition-colors">
+                        <a href="/cart/{{ $item->id }}">Add to Cart</a>
+                    </button>
+                    <button class="mt-3 w-full px-4 py-2 bg-[#4da6ff] text-black font-semibold rounded-md hover:bg-[#3399ff] transition-colors">
+                        <a href="/checkout/{{ $item->id }}">Buy Now</a>
+                    </button>
+                </div>
+            </div>
+        @endforeach
+    </div>
+
+    <footer class="w-full text-center py-6 mt-20 border-t border-white/10 text-sm text-white bg-black/40 backdrop-blur-sm">
+        &copy; {{ date('Y') }} Blox Shop. Create By Kelompok 5. All rights reserved.
+    </footer>
 
 </body>
 </html>
