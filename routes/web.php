@@ -10,3 +10,7 @@ Route::get('/', function () {
 
 // Ketika halaman utama diakses, jalankan fungsi index di ItemController
 Route::get('/', [ItemController::class, 'index']);
+
+Route::get('/admin/dashboard', function () {
+    return view('/admin');
+});
