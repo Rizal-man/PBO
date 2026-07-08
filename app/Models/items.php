@@ -2,19 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class items extends Model
+class Items extends Model
 {
-    use HasFactory;
-
-    // Daftarkan kolom database Anda di sini (misal: nama, harga, deskripsi)
     protected $fillable = [
         'nama_item',
         'jumlah_item',
         'harga_item',
         'kode_item',
         'images',
+        'category_id',
     ];
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

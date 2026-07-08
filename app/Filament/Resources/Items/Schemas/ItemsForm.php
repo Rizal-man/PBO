@@ -2,9 +2,10 @@
 
 namespace App\Filament\Resources\Items\Schemas;
 
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\fileUpload;
+use App\Models\Category;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Radio;
+use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
 class ItemsForm
@@ -20,13 +21,9 @@ class ItemsForm
                 TextInput::make('harga_item')
                     ->required()
                     ->numeric(),
-                Radio::make('kode_item')
-                    ->options([
-                        'fishit' => 'Fishit',
-                        'bloxfruit' => 'Blox Fruit',
-                        'sailor Piece' => 'Sailor Piece',
-                        'grow a garden' => 'Grow a Garden',
-                    ]),
+                Radio::make('category_id')
+                    ->options(fn () => Category::pluck('name', 'id'))
+                    ->required(),
                 FileUpload::make('images')
                     ->image()
                     ->disk('public')

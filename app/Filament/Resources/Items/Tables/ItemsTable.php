@@ -3,11 +3,11 @@
 namespace App\Filament\Resources\Items\Tables;
 
 use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\DeleteAction;
+use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class ItemsTable
@@ -18,7 +18,8 @@ class ItemsTable
             ->columns([
                 TextColumn::make('nama_item')
                     ->searchable(),
-                TextColumn::make('kode_item')
+                TextColumn::make('category.name')
+                    ->label('Category')
                     ->searchable(),
                 TextColumn::make('jumlah_item')
                     ->numeric()
@@ -42,7 +43,7 @@ class ItemsTable
             ])
             ->recordActions([
                 EditAction::make(),
-                deleteAction::make(),
+                DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

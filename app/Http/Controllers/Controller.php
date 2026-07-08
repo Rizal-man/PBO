@@ -2,18 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\items;
 abstract class Controller
 {
-    public function index()
-    {
-        // 2. Ambil semua data dari tabel items
-        $all_items = Items::all(); 
-
-        // Jika ingin membatasi atau mengurutkan data terbaru, bisa pakai:
-        // $all_items = Items::latest()->get();
-
-        // 3. Kirim data ke file blade bernama 'welcome.blade.php' dengan nama variabel 'items'
-        return view('welcome', ['items' => $all_items]);
-    }
+    //
 }
