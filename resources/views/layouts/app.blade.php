@@ -15,6 +15,11 @@
                 login: '{{ route('login') }}',
                 checkoutCart: '{{ route('checkout.cart') }}',
             },
+            @if(session('error'))
+                flash: { type: 'error', message: @json(session('error')) },
+            @elseif(session('success'))
+                flash: { type: 'success', message: @json(session('success')) },
+            @endif
         };
     </script>
 </head>

@@ -16,12 +16,3 @@
     @include('partials.founder-section')
     @include('partials.footer')
 @endsection
-
-@push('scripts')
-    @if(session('error'))
-        window.App.flash = { type: 'error', message: @json(session('error')) };
-    @endif
-    @if(session('success'))
-        window.App.flash = { type: 'success', message: @json(session('success')) };
-    @endif
-@endpush

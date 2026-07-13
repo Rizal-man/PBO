@@ -14,9 +14,9 @@
     {{-- Desktop nav + Mobile dropdown --}}
     <div id="navLinks"
         class="hidden md:flex gap-6 text-sm text-gray-400
-               max-md:absolute max-md:top-full max-md:left-0 max-md:right-0
-               max-md:flex-col max-md:bg-black/95 max-md:backdrop-blur-sm
-               max-md:border-b max-md:border-white/5 max-md:p-6 max-md:gap-4 max-md:z-50">
+            max-md:absolute max-md:top-full max-md:left-0 max-md:right-0
+            max-md:flex-col max-md:bg-black/95 max-md:backdrop-blur-sm
+            max-md:border-b max-md:border-white/5 max-md:p-6 max-md:gap-4 max-md:z-50">
         <a href="#" id="navShopLink" class="hover:text-white transition-colors py-1">Shop</a>
         <a href="#" id="navStatusLink" class="hover:text-white transition-colors py-1">Status</a>
         <a href="#" id="navFounderLink" class="hover:text-white transition-colors py-1">Founder</a>
@@ -26,21 +26,21 @@
             @endif
         @endauth
         <hr class="border-white/5 my-2 max-md:block hidden">
-        <button class="nav-cart-btn-mobile flex items-center gap-2 py-1 text-gray-400 hover:text-white transition-colors">
+        <button class="nav-cart-btn-mobile md:hidden flex items-center gap-2 py-1 text-gray-400 hover:text-white transition-colors">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 0a2 2 0 100 4 2 2 0 000-4z"/></svg>
             <span>Cart</span>
             <span class="cart-badge-mobile ml-auto bg-red-600 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full @auth @if(count($cart) > 0) @else hidden @endif @endauth @guest hidden @endguest">{{ auth()->check() ? array_sum(array_column($cart, 'quantity')) : 0 }}</span>
         </button>
         @auth
-            <span class="text-sm text-gray-300 font-medium py-1">{{ auth()->user()->name }}</span>
-            <form action="{{ route('logout') }}" method="POST">
+            <span class="md:hidden text-sm text-gray-300 font-medium py-1">{{ auth()->user()->name }}</span>
+            <form action="{{ route('logout') }}" method="POST" class="md:hidden">
                 @csrf
                 <button type="submit" class="w-full px-5 py-2 text-sm font-medium border border-gray-700 rounded-md hover:bg-white/5 transition-colors">
                     LOGOUT
                 </button>
             </form>
         @else
-            <a href="{{ route('login') }}" class="w-full text-center px-5 py-2 text-sm font-medium border border-gray-700 rounded-md hover:bg-white/5 transition-colors">
+            <a href="{{ route('login') }}" class="md:hidden w-full text-center px-5 py-2 text-sm font-medium border border-gray-700 rounded-md hover:bg-white/5 transition-colors">
                 LOGIN
             </a>
         @endauth
